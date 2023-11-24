@@ -1,0 +1,15 @@
+.nav.active{
+    color: red;
+    text-decoration: underline;
+    
+    
+    
+}
+
+.nav{
+    margin-right: 6px;
+    margin-left: 6px;
+    font-size: 16px;
+    font-weight: 500;
+   
+}
