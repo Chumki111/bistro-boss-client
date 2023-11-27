@@ -5,6 +5,9 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Search from "../Pages/Seach/Search";
+import Dashboard from "../Layouts/Dashboard";
+import MyDonationRequestsPage from "../Pages/DashboardPage/Donar/MyDonationRequestsPage";
+import CreateDonationRequestPage from "../Pages/DashboardPage/Donar/createDonationRequestPage";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +33,19 @@ const router = createBrowserRouter([
     {
         path:'/signUp',
         element:<SignUp/>
+    },{
+      path:'/dashboard',
+      element:<Dashboard/>,
+      children:[
+        {
+          path:'my-donation-requests',
+          element:<MyDonationRequestsPage/>
+        },
+        {
+          path:'create-donation-request',
+          element:<CreateDonationRequestPage/>
+        }
+      ]
     }
   ]);
 
