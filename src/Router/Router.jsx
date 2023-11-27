@@ -8,6 +8,7 @@ import Search from "../Pages/Seach/Search";
 import Dashboard from "../Layouts/Dashboard";
 import MyDonationRequestsPage from "../Pages/DashboardPage/Donar/MyDonationRequestsPage";
 import CreateDonationRequestPage from "../Pages/DashboardPage/Donar/createDonationRequestPage";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         element:<SignUp/>
     },{
       path:'/dashboard',
-      element:<Dashboard/>,
+      element:<PrivetRoute><Dashboard/></PrivetRoute>,
       children:[
         {
           path:'my-donation-requests',
