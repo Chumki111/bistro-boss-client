@@ -8,18 +8,20 @@ import MenuItem from './MenuItem'
 // / Icons
 
 import { FcSettings } from 'react-icons/fc'
-
-import { BsGraphUp } from 'react-icons/bs'
-import { BsFillHouseAddFill } from "react-icons/bs";
-import { MdBloodtype } from "react-icons/md";
 import { useState } from 'react';
 import { AiOutlineBars } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+import useRole from '../../../Hooks/useRole';
+import DonarMenu from './DonarMenu';
+import VolunteerMenu from './VolunteerMenu';
+import AdminMenu from './AdminMenu';
 
 
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
+    const [role] = useRole();
+    console.log(role?.role,role?.status);
     // Sidebar Responsive Handler
     const handleToggle = () => {
         setActive(!isActive)
@@ -58,22 +60,11 @@ const Sidebar = () => {
 
                         <nav>
                             {/* Menu Items */}
-                            <MenuItem
-                                icon={BsGraphUp}
-                                label='Statistics'
-                                address='/dashboard'
-                            />
-                            <MenuItem
-                                icon={BsFillHouseAddFill}
-                                label='My Donation Requests Page'
-                                address='my-donation-requests'
-                            />
-                            <MenuItem
-                                icon={MdBloodtype}
-                                label='Donation Request Page'
-                                address='create-donation-request'
-                            />
-
+                           
+                           
+                       {role?.role==='donar' && role?.status==='active' && <DonarMenu/>}
+                       {role?.role==='volunteer' && <VolunteerMenu/>}
+                       {role?.role==='admin' && <AdminMenu/>}
 
                         </nav>
                     </div>

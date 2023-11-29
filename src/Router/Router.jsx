@@ -9,6 +9,10 @@ import Dashboard from "../Layouts/Dashboard";
 import MyDonationRequestsPage from "../Pages/DashboardPage/Donar/MyDonationRequestsPage";
 import CreateDonationRequestPage from "../Pages/DashboardPage/Donar/createDonationRequestPage";
 import PrivetRoute from "./PrivetRoute";
+import AllUsers from "../Pages/DashboardPage/Admin/AllUsers";
+import DonarHome from "../Pages/DashboardPage/Donar/DonarHome";
+import DetailsPage from "../Pages/DashboardPage/Donar/DetailsPage";
+import { getSingleDonation } from "../Api/donations";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +49,20 @@ const router = createBrowserRouter([
         {
           path:'create-donation-request',
           element:<CreateDonationRequestPage/>
+        },
+        {
+          path:'detailsPage/:id',
+          element:<DetailsPage/>,
+          loader:({params}) => getSingleDonation(params.id)
+
+        },
+        {
+          path:'allUsers',
+          element:<AllUsers/>
+        },
+        {
+          path:'/dashboard',
+          element:<DonarHome/>
         }
       ]
     }

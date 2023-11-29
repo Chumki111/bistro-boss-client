@@ -11,3 +11,9 @@ export const getDonarDonations = async(email) =>{
     const {data} = await axiosSecure(`/donations/${email}`)
     return data;
 }
+
+// fetch single room from db
+export const getSingleDonation= async id =>{
+    const {data} = await axiosSecure(`/donation/${id}`)
+    return data;
+}
