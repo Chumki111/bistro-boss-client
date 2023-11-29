@@ -11,10 +11,11 @@ import TableHead from '@mui/material/TableHead';
 import Paper from '@mui/material/Paper';
 import { getDonarDonations } from '../../Api/donations';
 import useAuth from '../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const rowsPerPageOptions = [3, 5, 10];
 
-export default function EnhancedTable() {
+export default function DonationRequestForm(){
   const { user } = useAuth();
   const [donations, setDonations] = React.useState([]);
   const [page, setPage] = React.useState(0);
@@ -55,7 +56,7 @@ export default function EnhancedTable() {
             <TableCell align="right">Date</TableCell>
             <TableCell align="right">Donation Status</TableCell>
             <TableCell align="right">Delete</TableCell>
-            <TableCell align="right">Update</TableCell>
+            <TableCell align="right">Edit</TableCell>
             <TableCell align="right">View</TableCell>
           </TableRow>
         </TableHead>
@@ -73,11 +74,11 @@ export default function EnhancedTable() {
                 Delete
               </Button></TableCell>
               <TableCell align="right"><Button size="small"  style={{color:"red"}}>
-                Update
+                Edit
               </Button></TableCell>
-              <TableCell align="right"><Button size="small">
+              <TableCell align="right"><Link to={`detailsPage/${row._id}`}><Button size="small">
                 View
-              </Button></TableCell>
+              </Button></Link></TableCell>
 
             </TableRow>
           ))}

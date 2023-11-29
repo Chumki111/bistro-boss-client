@@ -13,6 +13,9 @@ import AllUsers from "../Pages/DashboardPage/Admin/AllUsers";
 import DonarHome from "../Pages/DashboardPage/Donar/DonarHome";
 import DetailsPage from "../Pages/DashboardPage/Donar/DetailsPage";
 import { getSingleDonation } from "../Api/donations";
+import Profile from "../Pages/DashboardPage/Profile/Profile";
+import AdminHome from "../Pages/DashboardPage/Admin/AdminHome";
+import AllBloodDonationRequest from "../Pages/DashboardPage/Admin/AllBloodDonationRequest";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element:<PrivetRoute><Dashboard/></PrivetRoute>,
       children:[
+        // donar route
         {
           path:'my-donation-requests',
           element:<MyDonationRequestsPage/>
@@ -56,13 +60,29 @@ const router = createBrowserRouter([
           loader:({params}) => getSingleDonation(params.id)
 
         },
+       
+        {
+          path:'/dashboard',
+          element:<DonarHome/>
+        },
+        // shared route
+        {
+          path:'/dashboard/profile',
+          element:<Profile/>
+        },
+
+        // admin route
+        {
+          path:'/dashboard',
+          element:<AdminHome/>
+        },
         {
           path:'allUsers',
           element:<AllUsers/>
         },
         {
-          path:'/dashboard',
-          element:<DonarHome/>
+          path:'/dashboard/all-blood-donation-request',
+          element:<AllBloodDonationRequest/>
         }
       ]
     }

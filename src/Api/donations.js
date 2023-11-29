@@ -17,3 +17,14 @@ export const getSingleDonation= async id =>{
     const {data} = await axiosSecure(`/donation/${id}`)
     return data;
 }
+
+// fetch all users from db
+export const getAllUsers= async() =>{
+    const {data} = await axiosSecure('/users')
+    return data;
+}
+// fetch all donations from db
+export const getAllDonations= async() =>{
+    const {data} = await axiosSecure('/donations')
+    return data;
+}
