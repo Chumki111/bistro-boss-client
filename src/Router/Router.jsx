@@ -16,6 +16,8 @@ import { getSingleDonation } from "../Api/donations";
 import Profile from "../Pages/DashboardPage/Profile/Profile";
 import AdminHome from "../Pages/DashboardPage/Admin/AdminHome";
 import AllBloodDonationRequest from "../Pages/DashboardPage/Admin/AllBloodDonationRequest";
+import ContentManagement from "../Pages/DashboardPage/Admin/ContentManagement";
+import AddBlog from "../Pages/DashboardPage/Admin/AddBlog";
 
 const router = createBrowserRouter([
     {
@@ -83,6 +85,16 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/all-blood-donation-request',
           element:<AllBloodDonationRequest/>
+        },
+        {
+          path:'/dashboard/content-management',
+          element:<ContentManagement/>
+        },
+        {
+          path:'/dashboard/content-management/add-blog',
+         element:<AddBlog/>
+
+          
         }
       ]
     }
