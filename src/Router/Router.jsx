@@ -20,6 +20,7 @@ import ContentManagement from "../Pages/DashboardPage/Admin/ContentManagement";
 import AddBlog from "../Pages/DashboardPage/Admin/AddBlog";
 
 import AllBloodDonationRequestVolunteer from "../Pages/DashboardPage/Volunteer/AllBloodDonationRequestVolunteer";
+import Funding from "../Pages/Funding";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
           path:'/search',
           element:<Search/>
+        },
+        {
+          path:'/funding',
+          element:<Funding/>
         }
       ]
     },
