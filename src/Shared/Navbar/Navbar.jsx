@@ -25,14 +25,21 @@ const Navbar = () => {
           <NavLink to="/dashboard" className="nav">
       Dashboard
     </NavLink>
+          <NavLink to="/funding" className="nav">
+      Funding
+    </NavLink>
 
        <button className="font-semibold" onClick={logOut}>logOut</button>
        </>
         :
+        <>
         <NavLink to="/login" className="nav">
         Login
       </NavLink>
-       
+        <NavLink to="/register" className="nav">
+       Registration
+      </NavLink>
+      </>
     }
 
 

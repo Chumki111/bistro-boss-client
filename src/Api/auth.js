@@ -7,7 +7,8 @@ export const saveUser = async user => {
         email: user.email,
         role: 'donar',
         status: 'active',
-        image : user?.photoURL
+        image : user?.photoURL,
+       
     }
 
     const { data } = await axiosSecure.put(`/users/${user.email}`, currentUser)
