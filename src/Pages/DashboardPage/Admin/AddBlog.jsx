@@ -1,10 +1,13 @@
 import { useRef, useState } from "react";
 import { imageUpload } from "../../../Api/utils";
 import JoditEditor from 'jodit-react';
+import { addBlog } from "../../../Api/donations";
+import { useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
   const editor = useRef(null);
   const [content, setContent] = useState('');
+  const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,12 +18,24 @@ const AddBlog = () => {
     console.log(name, image,editor);
     console.log(editor);
 
+    
+
     try {
+     
       // upload image
       const imageData = await imageUpload(image);
 
       console.log(imageData);
-
+      const blogData ={
+        title : name,
+        image : imageData?.data?.display_url,
+        content : editor,
+        status:'draft'
+      }
+  // add donation
+  const data = await addBlog(blogData)
+  console.log(data);
+   navigate('/dashboard/content-management')
 
 
     } catch (err) {
@@ -97,11 +112,7 @@ const AddBlog = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-              {/* {loading ? (
-            <TbFidgetSpinner className='m-auto animate-spin' size={24} />
-          ) : (
-            'Sign Up'
-          )} */}
+            
               Create
 
             </button>

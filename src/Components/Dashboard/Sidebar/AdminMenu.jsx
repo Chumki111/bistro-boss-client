@@ -9,7 +9,7 @@ const AdminMenu = () => {
              <MenuItem
                 icon={FaUsersCog}
                 label='Admin Home'
-                address='/dashboard'
+                address='/dashboard/admin-home'
             /> 
              <MenuItem
                 icon={HiUserGroup }

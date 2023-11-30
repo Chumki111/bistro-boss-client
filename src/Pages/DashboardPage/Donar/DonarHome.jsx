@@ -30,18 +30,20 @@ const DonarHome = () => {
 
            <TableContainer component={Paper}>
       <Table aria-label="enhanced table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Recipient Name</TableCell>
-            <TableCell align="right">Location</TableCell>
-            
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Donation Status</TableCell>
-            <TableCell align="right">Delete</TableCell>
-            <TableCell align="right">Update</TableCell>
-            <TableCell align="right">View</TableCell>
-          </TableRow>
-        </TableHead>
+      {
+        slicedDonations.length > 0 &&   <TableHead>
+        <TableRow>
+          <TableCell>Recipient Name</TableCell>
+          <TableCell align="right">Location</TableCell>
+          
+          <TableCell align="right">Date</TableCell>
+          <TableCell align="right">Donation Status</TableCell>
+          <TableCell align="right">Delete</TableCell>
+          <TableCell align="right">Update</TableCell>
+          <TableCell align="right">View</TableCell>
+        </TableRow>
+      </TableHead>
+      }
         <TableBody>
           {slicedDonations.map((row) => (
             <TableRow key={row._id}>
@@ -69,13 +71,15 @@ const DonarHome = () => {
      
     </TableContainer>
       {/* Display the button to view all requests */}
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-                <Link to="my-donation-requests">
-                    <Button variant="contained" style={{ backgroundColor: "red", color: "white" }}>
-                    view my all request
-                    </Button>
-                </Link>
-            </div>
+     {
+      slicedDonations.length> 0 &&  <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <Link to="my-donation-requests">
+          <Button variant="contained" style={{ backgroundColor: "red", color: "white" }}>
+          view my all request
+          </Button>
+      </Link>
+  </div>
+     }
         </div>
     );
 };

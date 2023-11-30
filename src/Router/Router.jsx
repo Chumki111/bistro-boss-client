@@ -19,6 +19,8 @@ import AllBloodDonationRequest from "../Pages/DashboardPage/Admin/AllBloodDonati
 import ContentManagement from "../Pages/DashboardPage/Admin/ContentManagement";
 import AddBlog from "../Pages/DashboardPage/Admin/AddBlog";
 
+import AllBloodDonationRequestVolunteer from "../Pages/DashboardPage/Volunteer/AllBloodDonationRequestVolunteer";
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -75,7 +77,7 @@ const router = createBrowserRouter([
 
         // admin route
         {
-          path:'/dashboard',
+          path:'/dashboard/admin-home',
           element:<AdminHome/>
         },
         {
@@ -95,6 +97,10 @@ const router = createBrowserRouter([
          element:<AddBlog/>
 
           
+        },
+        {
+          path : '/dashboard/all-blood-donation-requests',
+          element:<AllBloodDonationRequestVolunteer/>
         }
       ]
     }

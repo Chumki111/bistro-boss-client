@@ -4,14 +4,18 @@ import { getRole } from "../Api/auth";
 
 
 const useRole = () => {
-    const {user,loading} = useAuth();
+    const {user} = useAuth();
     const [role,setRole] = useState(null);
+    const [loading,setLoading] = useState(true)
     useEffect(() =>{
+       
         getRole(user?.email)
         .then(data =>{
             setRole(data)
+            setLoading(false)
         })
-    },[user])
+        
+    },[user?.email])
 
     return [role,loading]
    

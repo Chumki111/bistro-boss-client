@@ -5,6 +5,11 @@ export const addDonation =async(donationData) =>{
     const {data} = await axiosSecure.post(`/donations`,donationData)
     return data;
 }
+// save blogData
+export const addBlog =async(blogData) =>{
+    const {data} = await axiosSecure.post(`/blogs`,blogData)
+    return data;
+}
 
 // fetch all donation for donar
 export const getDonarDonations = async(email) =>{
@@ -26,5 +31,15 @@ export const getAllUsers= async() =>{
 // fetch all donations from db
 export const getAllDonations= async() =>{
     const {data} = await axiosSecure('/donations')
+    return data;
+}
+// fetch all donations from db
+export const getAllBlogs= async() =>{
+    const {data} = await axiosSecure('/blogs')
+    return data;
+}
+// fetch all donations from db
+export const getAllHome= async() =>{
+    const {data} = await axiosSecure('/admin-stats')
     return data;
 }

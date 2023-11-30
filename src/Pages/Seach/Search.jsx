@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { getAllUsers } from "../../Api/donations";
+import { getAllDonations } from "../../Api/donations";
 
 
 const Search = () => {
@@ -29,7 +29,7 @@ const Search = () => {
     }, [])
 
     useEffect(()=> {
-        getAllUsers('/users')
+        getAllDonations('/donations')
         .then((res) => {
             setSearchDonar(res);
         })
@@ -45,9 +45,11 @@ const Search = () => {
             console.log('filterdata',filterData);
             console.log('data',data);
             return (
-                filterData.upazila === data.upazila &&
-                filterData.district === data.district && 
-                filterData.bloodGroup === data.bloodGroup
+                filterData.recipient_upazila
+                === data.upazila &&
+                filterData.recipient_district
+                === data.district
+                // filterData.bloodGroup === data.bloodGroup
             )
         })
         console.log(filterData);
@@ -106,6 +108,40 @@ const Search = () => {
                 </div>
                 <button className="btn bg-red-700 hover:bg-red-700 text-white mx-auto flex">Search</button>
             </form>
+
+            <div className="overflow-x-auto">
+  <table className="table table-zebra">
+    {/* head */}
+
+    {
+        allFilterDatas.length > 0 &&  <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Upazila</th>
+          <th>District</th>
+        </tr>
+      </thead>
+    }
+ <tbody>
+    {
+        allFilterDatas?.map((data,index) => <tr key={data._id}>
+            
+            
+              <th>{index + 1}</th>
+              <td>{data?.recipient_name}</td>
+              <td>{data?.recipient_upazila}</td>
+              <td>{data?.recipient_district}</td>
+            </tr>
+           
+           
+           
+          )
+    }
+   
+   </tbody>
+  </table>
+</div>
 
         </div>
     );
